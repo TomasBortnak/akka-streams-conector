@@ -18,13 +18,16 @@ libraryDependencies ++= {
     "com.typesafe.akka" % "akka-actor_2.11" % akkaVer,
     "org.scalactic" %% "scalactic" % "2.2.6",
     "org.scalatest" %% "scalatest" % "2.2.6"
+
   )
 }
 
 libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick-hikaricp" % "3.1.1",
   "org.slf4j" % "slf4j-nop" % "1.6.4",
-  "mysql" % "mysql-connector-java" % "5.1.36"
+  "mysql" % "mysql-connector-java" % "5.1.36",
+  "org.json4s" %% "json4s-native" % "3.3.0",
+  "org.json4s" %% "json4s-jackson" % "3.3.0"
 )
 
 //no reactive redis client

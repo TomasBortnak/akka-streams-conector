@@ -4,7 +4,7 @@
 		module="stream_2.11"
 		revision="1.1"
 		status="integration"
-		publication="20160817125154"
+		publication="20160825153941"
 	>
 		<description>
 		stream
@@ -45,6 +45,8 @@
 		<dependency org="com.typesafe.slick" name="slick-hikaricp_2.11" rev="3.1.1" conf="compile->default(compile)"/>
 		<dependency org="org.slf4j" name="slf4j-nop" rev="1.6.4" conf="compile->default(compile)"/>
 		<dependency org="mysql" name="mysql-connector-java" rev="5.1.36" conf="compile->default(compile)"/>
+		<dependency org="org.json4s" name="json4s-native_2.11" rev="3.3.0" conf="compile->default(compile)"/>
+		<dependency org="org.json4s" name="json4s-jackson_2.11" rev="3.3.0" conf="compile->default(compile)"/>
 		<dependency org="net.debasishg" name="redisclient_2.11" rev="3.0" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

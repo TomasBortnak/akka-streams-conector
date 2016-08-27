@@ -46,7 +46,7 @@ object RESTFulServer {
   def run(): Unit = {
 
     val route =
-      post {
+      get {
         pathPrefix("user" / LongNumber) { id =>
 
           val maybeItem: Future[Option[User]] = fetchUser(id)

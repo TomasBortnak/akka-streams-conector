@@ -22,15 +22,24 @@
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.scalactic/scalactic_2.11/bundles/scalactic_2.11-2.2.6.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.6.jar[0m
-[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.typesafe.slick/slick-hikaricp_2.11/bundles/slick-hikaricp_2.11-3.1.1.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.typesafe.slick/slick_2.11/bundles/slick_2.11-3.1.1.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.zaxxer/HikariCP-java6/bundles/HikariCP-java6-2.3.7.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.slf4j/slf4j-nop/jars/slf4j-nop-1.6.4.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.36.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.json4s/json4s-native_2.11/jars/json4s-native_2.11-3.3.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.3.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.3.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.json4s/json4s-scalap_2.11/jars/json4s-scalap_2.11-3.3.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.thoughtworks.paranamer/paranamer/bundles/paranamer-2.8.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.5.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/org.json4s/json4s-jackson_2.11/jars/json4s-jackson_2.11-3.3.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.6.2.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.6.0.jar[0m
+[0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.6.2.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/net.debasishg/redisclient_2.11/jars/redisclient_2.11-3.0.jar[0m
 [0m[[0mdebug[0m] [0m	/Users/hello/.ivy2/cache/commons-pool/commons-pool/jars/commons-pool-1.6.jar[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
 [0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
-[0m[[0mdebug[0m] [0mWaiting for thread Sys-akka.actor.default-dispatcher-4 to terminate.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread Sys-akka.actor.default-dispatcher-3 to terminate.[0m

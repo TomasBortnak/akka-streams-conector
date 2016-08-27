@@ -2,9 +2,19 @@ package sample.stream.demo
 
 import scala.concurrent.Future
 
+import org.json4s._
+import org.json4s.native.JsonMethods._
+import org.json4s.JsonDSL._
+
+
 object Main {
 
+  implicit val formats = DefaultFormats
+
+
   def main(args: Array[String]) {
+
+
 
 
     Future {
@@ -23,7 +33,7 @@ object Main {
     println("== The HTTP sync request test == ")
 
     for (a <- 1 to 5) {
-      println("The number " + a + " request now")
+      //println("The number " + a + " request now")
       RESTFulClient.getByHTTP
       Thread.sleep(2000)
     }
@@ -32,12 +42,5 @@ object Main {
 
     RESTFulClient.getByReactiveStream("localhost", 8080, "")
 
-    /*
-    for (a <- 1 to 5) {
-      println("The number " + a + " retry now")
-      RESTFulClient.retry("GET", "test")
-    }*/
-
   }
-
 }

@@ -10,13 +10,18 @@ import com.typesafe.config.ConfigFactory
 import scala.concurrent.Future
 import akka.stream.scaladsl._
 
+import org.json4s._
+import org.json4s.native.JsonMethods._
+import org.json4s.JsonDSL._
+
 /**
- * - should have some custom exception class
  *
  * http://doc.akka.io/docs/akka/2.4/scala/http/client-side/connection-level.html
  *
  */
 class ReactiveStream {
+
+  implicit val formats = DefaultFormats
 
   val host = ConfigFactory.load().getString("redis.host")
   val port = ConfigFactory.load().getString("redis.port")
@@ -24,6 +29,9 @@ class ReactiveStream {
   var redis = new RedisClientPool(host, port.toInt)
   var enableRecovery = true
 
+  var latestQueryString = ""
+  var latestMessage = ""
+  var json = ""
 
   /**
    * By using HTTP get to send the message by reactive stream
@@ -33,6 +41,9 @@ class ReactiveStream {
    * @return Future[HTTPResponse]
    */
   def get(queryString: String, message: String) = {
+
+    latestQueryString = queryString
+    latestMessage = message
 
     val data = ByteString(message)
     HttpRequest(GET, uri = queryString, entity = data)
@@ -48,38 +59,58 @@ class ReactiveStream {
    */
   def post(queryString: String, message: String) = {
 
+    latestQueryString = queryString
+    latestMessage = message
+
     val data = ByteString(message)
     HttpRequest(POST, uri = queryString, entity = data)
 
   }
 
-  def retry(method: String, endpoint: String, port: Int, queryString: String, identity: String) = {
+  def error {
 
     if (enableRecovery) {
 
-      redis.withClient {
-        client => {
-          val content = client.get(identity).getOrElse(null)
-          if (content != null) {
+      val m = Map("query" -> latestQueryString, "message" -> latestMessage)
 
-          } else
-            null
+      //print(compact(render(m)))
+
+      if (json.isEmpty) {
+
+        json = "[" + compact(render(m)) + "]"
+
+        redis.withClient {
+          client =>
+            client.set("reactive_stream_recovery", json)
         }
+
+      } else {
+
+        redis.withClient {
+          client =>
+            json = client.get("reactive_stream_recovery").getOrElse("")
+            json = json.replace("[", "").replace("]", "")
+            json = "[" + json + "," + compact(render(m)) + "]"
+            println(json)
+            client.set("reactive_stream_recovery", json)
+            json = "not empty"
+        }
+
       }
-    } else
-      null
 
-  }
-
-  def save(identity: String, content: String) = {
-
-    // println("Redis saving, '" + identity + "' :: " + content)
-    redis.withClient {
-      client => {
-        client.set(identity, content)
-      }
     }
 
   }
 
+  def retry = {
+
+    if (enableRecovery) {
+
+      redis.withClient {
+        client => client.get("reactive_stream_recovery").getOrElse("")
+      }
+    } else {
+      null
+    }
+  }
 }

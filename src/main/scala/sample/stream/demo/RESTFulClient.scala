@@ -4,6 +4,7 @@ package sample.stream.demo
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.HttpMethods._
 import akka.http.scaladsl.model.{HttpResponse, HttpRequest}
+import akka.stream.ThrottleMode
 import akka.util.ByteString
 import com.redis._
 import com.typesafe.config.ConfigFactory
@@ -29,11 +30,14 @@ object RESTFulClient {
     val wordList: Iterator[List[String]] = scala.io.Source.fromFile("src/main/resources/2008.csv", "utf-8").getLines().map(line => line.replace(",", " ").split("\\s+").toList)
     val source = Source.fromIterator(() => wordList).mapConcat(identity)
 
-    source.map {
-      d =>
-        Thread.sleep(2000)
-        rs.post("/user/" + d, "")
-    }.via(connectionFlow)
+    source
+      .map {
+        d =>
+          Thread.sleep(2000)
+          rs.post("/user/" + d, "")
+      }
+      .via(connectionFlow)
+      //.throttle(1, 1.second, 1, ThrottleMode.shaping)
       .runWith(Sink.foreach {
         res => res.status.isSuccess() match {
           case true =>
@@ -41,8 +45,10 @@ object RESTFulClient {
             println(res.entity)
           case _ =>
             println("==> send error")
+            rs.error
         }
       })
+
 
   }
 
