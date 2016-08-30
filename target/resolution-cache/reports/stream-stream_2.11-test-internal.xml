@@ -7,7 +7,7 @@
 		revision="1.1"
 		conf="test-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20160830022128"/>
+		date="20160830110009"/>
 	<dependencies>
 		<module organisation="net.debasishg" name="redisclient_2.11">
 			<revision name="3.0" status="release" pubdate="20150510024551" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/debasishg/scala-redis" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="36">
