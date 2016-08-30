@@ -14,9 +14,6 @@ object Main {
 
   def main(args: Array[String]) {
 
-
-
-
     Future {
       RESTFulServer.run()
     }
@@ -34,8 +31,8 @@ object Main {
 
     for (a <- 1 to 5) {
       //println("The number " + a + " request now")
-      RESTFulClient.getByHTTP
-      Thread.sleep(2000)
+      //RESTFulClient.getByHTTP
+      //Thread.sleep(2000)
     }
 
     println("== The reactive stream HTTP request test ==")
