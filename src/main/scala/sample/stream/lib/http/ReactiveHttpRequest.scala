@@ -59,18 +59,19 @@ class ReactiveHttpRequest {
   /**
    * To send a stream of http request by HTTP GET with akka stream & http
    *
-   * @param endpoint the endponint of the service, just domain name
-   * @param port the port of the service
    * @param queryInfo the query information including query string and the data to send
    * @param success the callback to deal with success response
    * @param error the callback to deal with error response
    * @return
    */
 
-  def get(endpoint: String, port: Int, queryInfo: Iterator[List[QueryInfomation]], success: HttpResponse => Unit, error: HttpResponse => Unit) = {
+  def get(queryInfo: Iterator[List[QueryInfomation]], success: HttpResponse => Unit, error: HttpResponse => Unit) = {
+
+    val endpoint = ConfigFactory.load().getString("sample.stream.lib.http.api.endpoint")
+    val port = ConfigFactory.load().getString("sample.stream.lib.http.api.port")
 
     val connectionFlow: Flow[HttpRequest, HttpResponse, Future[Http.OutgoingConnection]] =
-      Http().outgoingConnection(endpoint, port = port)
+      Http().outgoingConnection(endpoint, port = port.toInt)
 
     val source = Source.fromIterator(() => queryInfo).mapConcat(identity)
 
@@ -100,18 +101,19 @@ class ReactiveHttpRequest {
   /**
    * To send a stream of http request by HTTP GET with akka stream & http
    *
-   * @param endpoint the endponint of the service, just domain name
-   * @param port the port of the service
    * @param queryInfo the query information including query string and the data to send
    * @param success the callback to deal with success response
    * @param error the callback to deal with error response
    * @return
    */
 
-  def post(endpoint: String, port: Int, queryInfo: Iterator[List[QueryInfomation]], success: HttpResponse => Unit, error: HttpResponse => Unit) = {
+  def post(queryInfo: Iterator[List[QueryInfomation]], success: HttpResponse => Unit, error: HttpResponse => Unit) = {
+
+    val endpoint = ConfigFactory.load().getString("sample.stream.lib.http.api.endpoint")
+    val port = ConfigFactory.load().getString("sample.stream.lib.http.api.port")
 
     val connectionFlow: Flow[HttpRequest, HttpResponse, Future[Http.OutgoingConnection]] =
-      Http().outgoingConnection(endpoint, port = port)
+      Http().outgoingConnection(endpoint, port = port.toInt)
 
     val source = Source.fromIterator(() => queryInfo).mapConcat(identity)
 

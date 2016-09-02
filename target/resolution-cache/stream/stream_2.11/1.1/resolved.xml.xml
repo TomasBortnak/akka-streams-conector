@@ -4,7 +4,7 @@
 		module="stream_2.11"
 		revision="1.1"
 		status="integration"
-		publication="20160830110009"
+		publication="20160830231203"
 	>
 		<description>
 		stream
@@ -27,9 +27,7 @@
 	</configurations>
 	<publications>
 		<artifact name="stream_2.11" type="pom" ext="pom" conf="pom"/>
-		<artifact name="stream_2.11" type="jar" ext="jar" conf="compile"/>
-		<artifact name="stream_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		<artifact name="stream_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		<artifact name="stream_2.11" type="jar" ext="jar" conf="optional" e:classifier="download"/>
 	</publications>
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.7" conf="scala-tool->default,optional(default)"/>
